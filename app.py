@@ -34,7 +34,7 @@ if uploaded_file is not None:
 
     with col2:
         st.metric(label="RMSE", value="11.86")
-        st.metric(label="SE", value="140.56")
+        st.metric(label="MSE", value="140.56")
 
     with col3:
         st.metric(label="R² Score", value="0.493")

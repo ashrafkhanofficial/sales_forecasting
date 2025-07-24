@@ -12,8 +12,8 @@ def load_and_clean_data(filepath):
     data = pd.read_csv(filepath)
     return data
 
+# features for the model
 
-#model = joblib.load('models/xgboost_model.pkl')
 features = ['Day before holiday','Non Holiday date',
        'Day after holiday', 'Non Holiday',
        'Payment Week', 'Weekend',
@@ -73,6 +73,8 @@ def forecast_next_week(data, model):
     future_df['Date'] = future_df['Date'].dt.date
     future_df['Day'] = pd.to_datetime(future_df['Date']).dt.day_name() 
     return future_df[['Date', 'Day', 'predicted_sale']]
+
+# forecast next month function
 
 def forecast_next_month(data, model):
     last_date = pd.to_datetime(data.reset_index()['Date'].max())
@@ -138,7 +140,5 @@ if __name__ == "__main__":
     model = joblib.load('models/xgboost_model.pkl')
 
     forecast = forecast_next_month(data, model)
-    ##print("forecast for next 7 days")
-
-    ##print(forecast)
+ 
 
